@@ -11,10 +11,8 @@ RUN apt-get install -y --no-install-recommends libreadline-gplv2-dev libncursesw
     libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev
 RUN wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz
 RUN tar xzf Python-3.7.4.tgz
-RUN cd Python-3.7.4
-RUN ./configure --enable-optimizations
+RUN Python-3.7.4/configure --enable-optimizations
 RUN make altinstall
-RUN cd ..
 RUN rm -rf Python-3.7.4
 RUN rm Python-3.7.4.tgz
 RUN apt-get install -y --no-install-recommends \
