@@ -12,8 +12,11 @@ RUN apt-get install -y --no-install-recommends libreadline-gplv2-dev libncursesw
 RUN wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz
 RUN tar xzf Python-3.7.4.tgz
 RUN cd Python-3.7.4
-RUN sudo ./configure --enable-optimizations
-RUN sudo make altinstall
+RUN ./configure --enable-optimizations
+RUN make altinstall
+RUN cd ..
+RUN rm -rf Python-3.7.4
+RUN rm Python-3.7.4.tgz
 RUN apt-get install -y --no-install-recommends \
     git \
     cmake \
@@ -24,4 +27,3 @@ RUN apt-get install -y --no-install-recommends \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 RUN pip3.7 install pytorch_metric_learning
-
